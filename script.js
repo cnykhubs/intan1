@@ -57,3 +57,48 @@ if (document.getElementById("popup-luluh")) {
         alert("Terima kasih... Aku serius sama kamu. ❤️");
     });
 }
+
+// LOVE FLOATING
+setInterval(() => {
+    const love = document.createElement("div");
+    love.className = "love";
+    love.textContent = "💖";
+    love.style.left = Math.random() * window.innerWidth + "px";
+    document.body.appendChild(love);
+    setTimeout(() => love.remove(), 4000);
+}, 800);
+
+// PESAN BUBBLE
+const bubble = document.getElementById("pesan-bubble");
+let bubbleShown = false;
+
+window.addEventListener("scroll", () => {
+    if (!bubbleShown && window.scrollY > 60) {
+        bubbleShown = true;
+        bubble.style.display = "block";
+        bubble.innerHTML = "Aku masih sayang kamu...";
+        setTimeout(() => {
+            bubble.innerHTML = "Ingat ga momen kita?";
+        }, 3000);
+        setTimeout(() => {
+            bubble.innerHTML = "Aku kangen deket sama kamu...";
+        }, 6000);
+        setTimeout(() => {
+            bubble.style.display = "none";
+        }, 10000);
+    }
+});
+
+// SURAT AKHIR
+const surat = document.getElementById("surat-akhir");
+const btnSurat = document.getElementById("tutupSurat");
+
+window.addEventListener("scroll", () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 2) {
+        surat.style.display = "flex";
+    }
+});
+
+btnSurat.addEventListener("click", () => {
+    surat.style.display = "none";
+});
