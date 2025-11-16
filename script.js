@@ -89,30 +89,33 @@ window.addEventListener("scroll", () => {
     }
 });
 
-// SURAT AKHIR – FIX AMAN
+// SURAT AKHIR – FIX FINAL
 document.addEventListener("DOMContentLoaded", () => {
     const surat = document.getElementById("surat-akhir");
     const btnSurat = document.getElementById("tutupSurat");
 
-    if (surat && btnSurat) {
+    let suratSudahMuncul = false;  
+    let suratSudahDitutup = false; 
 
-        let suratSudahMuncul = false; // biar tidak muncul dua kali
+    window.addEventListener("scroll", () => {
+        if (
+            !suratSudahMuncul &&
+            !suratSudahDitutup &&
+            window.innerHeight + window.scrollY >= document.body.offsetHeight - 2
+        ) {
+            surat.style.display = "flex";
+            suratSudahMuncul = true;
+        }
+    });
 
-        window.addEventListener("scroll", () => {
-            if (!suratSudahMuncul &&
-                window.innerHeight + window.scrollY >= document.body.offsetHeight - 2) {
+    btnSurat.addEventListener("click", () => {
+        surat.style.opacity = "0";
 
-                surat.style.display = "flex";
-                suratSudahMuncul = true;
-            }
-        });
+        setTimeout(() => {
+            surat.style.display = "none";
+            surat.style.opacity = "1";
+        }, 300);
 
-        btnSurat.addEventListener("click", () => {
-            surat.style.opacity = "0";
-            setTimeout(() => {
-                surat.style.display = "none";
-                surat.style.opacity = "1"; 
-            }, 400);
-        });
-    }
+        suratSudahDitutup = true; // <<< FIX PENTING
+    });
 });
