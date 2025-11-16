@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'Comic Neue', cursive;
+    /* src: url('../fonts/Lobster-Regular.ttf') format('woff2'),
+         url('../fonts/Lobster-Regular.ttf') format('woff'); */
+    font-weight: italic;
+    font-style: italic;
+
+}
+
+@font-face {
+    font-family: 'Comic Neue', cursive;
+    /* src: url('../fonts/Lobster-Regular.ttf') format('woff2'),
+         url('../fonts/Lobster-Regular.ttf') format('woff'); */
+    font-weight: italic;
+    font-style: italic;
+}
+
+body {
+    font-family: 'Comic Neue', cursive;;
+    background-image: url(../img/bby.jpeg);
+}
+
+.content__credits {
+    font-family: 'Comic Neue', cursive;
+    letter-spacing: 1px;
+    font-size: 1.15rem;
+    font-style: bold;
+}
