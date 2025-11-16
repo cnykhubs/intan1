@@ -89,16 +89,30 @@ window.addEventListener("scroll", () => {
     }
 });
 
-// SURAT AKHIR
-const surat = document.getElementById("surat-akhir");
-const btnSurat = document.getElementById("tutupSurat");
+// SURAT AKHIR – FIX AMAN
+document.addEventListener("DOMContentLoaded", () => {
+    const surat = document.getElementById("surat-akhir");
+    const btnSurat = document.getElementById("tutupSurat");
 
-window.addEventListener("scroll", () => {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 2) {
-        surat.style.display = "flex";
+    if (surat && btnSurat) {
+
+        let suratSudahMuncul = false; // biar tidak muncul dua kali
+
+        window.addEventListener("scroll", () => {
+            if (!suratSudahMuncul &&
+                window.innerHeight + window.scrollY >= document.body.offsetHeight - 2) {
+
+                surat.style.display = "flex";
+                suratSudahMuncul = true;
+            }
+        });
+
+        btnSurat.addEventListener("click", () => {
+            surat.style.opacity = "0";
+            setTimeout(() => {
+                surat.style.display = "none";
+                surat.style.opacity = "1"; 
+            }, 400);
+        });
     }
-});
-
-btnSurat.addEventListener("click", () => {
-    surat.style.display = "none";
 });
