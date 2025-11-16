@@ -45,3 +45,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tidak ada JS khusus untuk main-content.html jika tidak ada interaksi tambahan
     // Misalnya, jika Anda ingin menambahkan lightbox gallery, JS-nya akan di sini
 });
+
+// Popup Luluh Mantan
+if (document.getElementById("popup-luluh")) {
+    const pop = document.getElementById("popup-luluh");
+    const btn = document.getElementById("btnLuluh");
+
+    btn.addEventListener("click", () => {
+        pop.style.opacity = "0";
+        setTimeout(() => pop.style.display = "none", 500);
+        alert("Terima kasih... Aku serius sama kamu. ❤️");
+    });
+}
