@@ -27,346 +27,187 @@ main {
     padding: 40px; 
     background-color: rgba(255, 255, 255, 0.95);
     border-radius: 15px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); 
-    opacity: 0;
-    animation: fadeInContent 1s forwards;
-    animation-delay: 2s;
-}
-
-@keyframes fadeInContent {
-    to { opacity: 1; }
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 footer p {
     margin-top: 50px;
-    font-size: 1.1em;
-    color: #666;
+    font-size: 0.9em;
+    color: #777;
 }
 
 /* ==================================== */
-/* 2. SPLASH SCREEN & PASSWORD PAGE     */
+/* 2. SPLASH & PASSWORD                 */
 /* ==================================== */
 #splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #e0e0e0 0%, #f0f0f0 100%); /* Tema lebih soft */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: linear-gradient(45deg, #f7e6e6, #fcfcfc);
+    color: #333;
+    z-index: 1000;
+    animation: fadeOut 1s ease-in-out 4s forwards; 
 }
 
 .lucu-gif {
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 5px solid #884A4A;
-    box-shadow: 0 0 20px rgba(136, 74, 74, 0.5);
-    animation: pulse 1.5s infinite alternate;
-}
-
-@keyframes pulse {
-    from { transform: scale(1); }
-    to { transform: scale(1.05); }
+    width: 280px; 
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    animation: zoomIn 1s ease-out;
 }
 
 .teks-bawah-gif {
-    margin-top: 30px;
-    font-size: 1.5em;
+    margin-top: 25px;
+    font-size: 1.8em;
     font-family: 'Handlee', cursive;
     color: #884A4A;
+    text-shadow: none;
+    animation: slideInUp 1s ease-out 0.5s forwards;
+    opacity: 0;
 }
 
+@keyframes slideInUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
+
+/* Password Page */
 .password-page {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #f7e6e6 0%, #e8e8e8 100%);
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
 }
 
 .password-container {
-    background: white;
+    background-color: rgba(255, 255, 255, 0.95);
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    max-width: 350px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 90%;
 }
 
 .password-container h1 {
-    font-size: 2em;
+    font-size: 2.2em;
+    color: #884A4A;
 }
 
 #passwordInput {
-    width: 100%;
-    padding: 10px;
-    margin: 15px 0;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box;
+    width: calc(100% - 20px);
+    padding: 15px;
+    margin: 20px 0;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1.2em;
     text-align: center;
-    font-size: 1.1em;
+    transition: all 0.3s ease;
 }
 
 #submitPassword {
-    width: 100%;
-    background: #884A4A;
+    background-color: #884A4A;
     color: white;
-    padding: 12px 25px;
-    border-radius: 8px;
     border: none;
-    font-size: 1.1em;
+    padding: 15px 30px;
+    border-radius: 10px;
     cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s;
+    font-size: 1.1em;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 #submitPassword:hover {
-    background: #A05252;
+    background-color: #5d3333;
+    transform: translateY(-2px);
 }
 
 .error-message {
-    color: red;
-    opacity: 0;
-    transition: opacity 0.5s;
-    margin-top: 10px;
+    color: #cc0000;
+    margin-top: 15px;
+    font-weight: bold;
+    opacity: 0; 
 }
 
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
 
 /* ==================================== */
-/* 3. MAIN CONTENT - EFEK & TEKS        */
+/* 3. KONTEN UTAMA                      */
 /* ==================================== */
-
-.heartbeat {
-    font-size: 2.5em;
-    font-weight: 700;
-}
-
-/* Efek Typing Dramatis */
-.typing-container {
-    margin: 20px auto 40px;
-    max-width: 90%;
-    min-height: 50px;
-    border-right: .15em solid #884A4A; 
-    white-space: nowrap;
-    overflow: hidden;
-    font-size: 1.4em;
-    font-weight: 700;
-    color: #884A4A;
-    padding-bottom: 5px;
-    animation: blink-caret 0.75s step-end infinite;
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: #884A4A; }
-}
-
-.typing-text {
-    display: inline-block;
+#tentang p {
+    font-size: 1.1em;
+    color: #555;
+    margin: 20px 0;
 }
 
 .quote {
     font-style: italic;
-    margin: 30px auto;
-    padding: 15px;
-    background-color: #f7e6e6;
-    border-left: 5px solid #884A4A;
-    max-width: 80%;
-    border-radius: 8px;
     font-family: 'Cormorant Garamond', serif;
-}
-
-/* JANJI PERUBAHAN */
-#janji-nyata {
-    margin-top: 50px;
-    padding: 30px;
-    background-color: #ffeaea;
-    border-radius: 10px;
-    border: 1px dashed #884A4A;
-}
-
-.janji-list {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-    font-size: 1.15em;
-}
-
-.janji-list li {
-    padding: 10px 0;
-    border-bottom: 1px dotted #ccc;
-    color: #444;
-    transition: color 0.3s;
-}
-
-.janji-list li:before {
-    content: "✔️ ";
+    font-weight: 700;
+    font-size: 1.2em;
     color: #884A4A;
-    font-weight: bold;
+    margin: 30px 0;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-left: 5px solid #884A4A;
+    border-radius: 8px;
 }
 
-.janji-list li:last-child {
-    border-bottom: none;
-}
-
-/* 🖼️ GALERI FOTO - EFEK HOVER */
+/* Galeri Foto */
 .galeri-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
+    gap: 25px;
+    padding: 20px 0;
 }
 
 .galeri-grid img {
     width: 100%;
-    height: 200px;
+    height: 250px; 
     object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.4s ease, filter 0.4s ease;
-    filter: grayscale(20%) brightness(90%);
+    border-radius: 12px;
+    border: 4px solid #fff; 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s ease-in-out;
     cursor: pointer;
 }
 
 .galeri-grid img:hover {
-    transform: scale(1.05);
-    filter: grayscale(0%) brightness(100%);
+    transform: scale(1.05); 
 }
 
 /* ==================================== */
-/* 4. POPUP & MODAL FOTO (Interaksi)    */
+/* 4. MODALS, SURAT & BUTTONS           */
 /* ==================================== */
-
-/* 팝업 LULUH */
-.popup-luluh {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-    transition: opacity 0.5s ease;
-}
-
-.popup-box {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
-    max-width: 450px;
-    text-align: center;
-    position: relative;
-    animation: popIn 0.5s ease-out;
-}
-.popup-box h2 {
-    color: #884A4A;
-}
-
-@keyframes popIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-.btn-luluh {
-    margin-top: 25px;
-    background: #884A4A;
-    color: white;
-    padding: 12px 30px;
-    border-radius: 30px;
-    border: none;
-    font-size: 1.1em;
-    cursor: pointer;
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-.btn-luluh:hover {
-    background: #A05252;
-}
-
-/* 💌 SURAT AKHIR */
-.surat-akhir {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.surat-box {
-    background: white;
-    padding: 40px;
-    border-radius: 15px;
-    max-width: 500px;
-    text-align: center;
-    box-shadow: 0 0 50px rgba(255, 255, 255, 0.4);
-}
-
-.tombol-akhir {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 30px;
-}
-
-.btn-whatsapp {
-    background: #25d366; 
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: transform 0.2s;
-    font-family: 'Cormorant Garamond', serif;
-}
-
-.btn-whatsapp:hover {
-    background: #128c7e;
-    transform: scale(1.05);
-}
-
-.btn-surat {
-    background: #ccc;
-    color: #444;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s;
-    font-family: 'Cormorant Garamond', serif;
-}
-.btn-surat:hover {
-    background: #aaa;
-}
-
-/* ** MODAL FOTO KLIK ** */
+/* Photo Modal */
 .modal-foto {
-    display: none;
-    position: fixed;
-    z-index: 20000;
+    display: none; 
+    position: fixed; 
+    z-index: 10000; 
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.95);
-    justify-content: center;
+    background-color: rgba(0,0,0,0.8);
     align-items: center;
-    animation: fadeInModal 0.3s;
+    justify-content: center;
+    animation: fadeInModal 0.5s;
 }
 
 .modal-content {
@@ -374,46 +215,31 @@ footer p {
     display: block;
     width: 90%;
     max-width: 600px;
-    background: white;
+    background: #fff;
+    padding: 20px;
     border-radius: 15px;
-    padding: 30px;
-    text-align: center;
-    position: relative;
-    animation: zoomIn 0.3s;
-    box-shadow: 0 0 50px rgba(255, 255, 255, 0.5); 
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    animation: zoomIn 0.5s;
 }
 
 .modal-img {
     width: 100%;
     height: auto;
-    max-height: 400px;
-    object-fit: contain;
     border-radius: 10px;
-    margin-bottom: 20px;
-    border: 3px solid #884A4A;
 }
 
 .modal-pesan {
     color: #884A4A;
-    font-family: 'Handlee', cursive;
-    font-size: 1.6em;
-    font-weight: 700;
-    font-style: italic;
-    padding: 10px 0;
+    font-size: 1.1em;
     margin-top: 15px;
-    line-height: 1.4;
+    font-style: italic;
 }
 
 .close-button {
-    position: absolute;
-    top: 10px;
-    right: 30px;
-    color: #fff;
-    font-size: 40px;
+    color: #aaa;
+    float: right;
+    font-size: 35px;
     font-weight: bold;
-    transition: 0.3s;
-    cursor: pointer;
-    text-shadow: 0 0 5px #000;
 }
 
 .close-button:hover,
@@ -434,11 +260,7 @@ footer p {
 }
 
 
-/* ==================================== */
-/* 5. LAIN-LAIN                           */
-/* ==================================== */
-
-/* ❤️ LOVE FLOATING */
+/* Love Floating */
 .love {
     position: fixed;
     top: -10px;
@@ -453,7 +275,7 @@ footer p {
     100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
 }
 
-/* 💬 BUBBLE PESAN */
+/* Pesan Bubble */
 .pesan-bubble {
     position: fixed;
     bottom: 90px;
@@ -462,33 +284,66 @@ footer p {
     border: 2px solid #884A4A;
     padding: 15px 20px;
     border-radius: 20px 20px 0 20px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
     display: none;
-    font-size: 16px;
-    font-style: italic;
-    color: #333;
+    font-size: 1.1em;
     animation: fadeIn 0.5s ease-out;
     z-index: 9999;
     max-width: 250px;
     text-align: left;
 }
 
-@media (max-width: 600px) {
-    main {
-        padding: 20px;
-        margin: 10px auto;
-    }
-    .galeri-grid {
-        grid-template-columns: 1fr;
-    }
-    .modal-content {
-        width: 95%;
-        padding: 15px;
-    }
-    .modal-pesan {
-        font-size: 1.2em;
-    }
-    .popup-box {
-        max-width: 90%;
-    }
+/* Surat Akhir */
+.surat-akhir {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 999999;
+}
+
+.surat-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 85%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
+}
+
+.tombol-akhir {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn-whatsapp {
+    background: #25D366;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+}
+
+.btn-tutup {
+    background: #884A4A;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 700;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }

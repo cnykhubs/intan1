@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Logika untuk index.html (Splash Screen)
+    // --- Logika index.html (Splash Screen) ---
     if (document.getElementById('splash-screen')) {
         const durasiAnimasiGIF = 5000;
         setTimeout(() => {
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, durasiAnimasiGIF);
     }
 
-    // Logika untuk password.html
+    // --- Logika password.html ---
     if (document.getElementById('passwordInput')) {
         const passwordInput = document.getElementById('passwordInput');
         const submitPasswordBtn = document.getElementById('submitPassword');
@@ -36,135 +36,103 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Logika Popup Luluh Mantan
-    if (document.getElementById("popup-luluh")) {
-        const pop = document.getElementById("popup-luluh");
-        const btn = document.getElementById("btnLuluh");
+    // --- Logika KHUSUS main-content.html (Fix utama untuk mencegah error "is null") ---
+    if (document.getElementById('konten-utama')) {
+        
+        // --- Photo Modal ---
+        const modal = document.getElementById('photo-modal');
+        const modalImage = document.getElementById('modal-image');
+        const modalText = document.getElementById('modal-text');
+        const closeButton = document.querySelector('.modal-foto .close-button');
+        const clickableImages = document.querySelectorAll('.clickable-img');
 
-        // Efek getar saat pop-up muncul (hanya berfungsi di ponsel)
-        if (navigator.vibrate) {
-            navigator.vibrate(200); 
-        }
-
-        btn.addEventListener("click", () => {
-            pop.style.opacity = "0";
-            setTimeout(() => pop.style.display = "none", 500);
-
-            // Efek getar saat tombol diklik
-            if (navigator.vibrate) {
-                navigator.vibrate([100, 50, 100]); 
-            }
-
-            alert("Terima kasih sudah memberiku waktu untuk bicara. Aku menunggu jawabanmu yang terpenting: Maukah kamu memaafkanku dan kembali membangun cerita kita? ❤️");
+        clickableImages.forEach(img => {
+            img.addEventListener('click', () => {
+                // Tambahkan pengecekan null untuk keamanan
+                if (modal && modalImage && modalText) {
+                    modal.style.display = 'flex';
+                    modalImage.src = img.src;
+                    modalText.textContent = img.getAttribute('data-message');
+                }
+            });
         });
-    }
-    
-    // ** EFEK TYPING DRAMATIS **
-    const typingText = document.getElementById('typing-output');
-    if (typingText) {
-        const textToType = "Aku tidak bisa hidup tanpa kamu. Aku mohon, maafkan aku. Aku mencintaimu lebih dari segalanya.";
-        let i = 0;
-        const speed = 75; // Kecepatan ketikan
 
-        function typeWriter() {
-            if (i < textToType.length) {
-                typingText.innerHTML += textToType.charAt(i);
-                i++;
-                setTimeout(typeWriter, speed);
+        if (closeButton) {
+            closeButton.addEventListener('click', () => {
+                if (modal) modal.style.display = 'none';
+            });
+        }
+
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // --- LOVE FLOATING ---
+        setInterval(() => {
+            const love = document.createElement("div");
+            love.className = "love";
+            love.textContent = "💔"; // Menggunakan ikon tema penyesalan
+            document.body.appendChild(love);
+            love.style.left = Math.random() * window.innerWidth + "px";
+            setTimeout(() => love.remove(), 5000); 
+        }, 1000); 
+
+        // --- PESAN BUBBLE ---
+        const bubble = document.getElementById("pesan-bubble");
+        let bubbleShown = false;
+
+        if (bubble) {
+            window.addEventListener("scroll", () => {
+                if (!bubbleShown && window.scrollY > 60) {
+                    bubbleShown = true;
+                    bubble.style.display = "block";
+                    bubble.innerHTML = "Aku ingat, dulu kamu selalu ada untukku...";
+                    setTimeout(() => {
+                        bubble.innerHTML = "Aku merindukan cara kamu melihatku. Rindu rumah kita.";
+                    }, 4000);
+                    setTimeout(() => {
+                        bubble.innerHTML = "Aku benar-benar siap berubah. Tolong percaya. 🙏";
+                    }, 8000);
+                    setTimeout(() => {
+                        bubble.style.display = "none";
+                    }, 12000);
+                }
+            });
+        }
+        
+        // --- SURAT AKHIR ---
+        const surat = document.getElementById("surat-akhir");
+        const btnSurat = document.getElementById("tutupSurat"); 
+
+        if (surat) {
+            let suratSudahMuncul = false;  
+            let suratSudahDitutup = false; 
+
+            window.addEventListener("scroll", () => {
+                if (
+                    !suratSudahMuncul &&
+                    !suratSudahDitutup &&
+                    window.innerHeight + window.scrollY >= document.body.offsetHeight - 2
+                ) {
+                    surat.style.display = "flex";
+                    surat.style.opacity = "1";
+                    suratSudahMuncul = true;
+                }
+            });
+
+            if (btnSurat) {
+                btnSurat.addEventListener("click", () => {
+                    surat.style.opacity = "0";
+
+                    setTimeout(() => {
+                        surat.style.display = "none";
+                    }, 300);
+
+                    suratSudahDitutup = true;
+                });
             }
         }
-        setTimeout(typeWriter, 1500); // Mulai efek setelah header muncul
     }
-
-    // ** LOGIKA KLIK FOTO (BARU) **
-    const clickableImages = document.querySelectorAll('.clickable-img');
-    const photoModal = document.getElementById('photo-modal');
-    const modalImage = document.getElementById('modal-image');
-    const modalText = document.getElementById('modal-text');
-    const closeButton = document.querySelector('.close-button');
-
-    clickableImages.forEach(img => {
-        img.addEventListener('click', () => {
-            const message = img.getAttribute('data-message');
-            const src = img.getAttribute('src');
-
-            modalImage.setAttribute('src', src);
-            modalText.textContent = message;
-            photoModal.style.display = 'flex';
-        });
-    });
-
-    closeButton.addEventListener('click', () => {
-        photoModal.style.display = 'none';
-    });
-
-    window.addEventListener('click', (event) => {
-        if (event.target === photoModal) {
-            photoModal.style.display = 'none';
-        }
-    });
-
-});
-
-// LOVE FLOATING
-setInterval(() => {
-    const love = document.createElement("div");
-    love.className = "love";
-    love.textContent = "💔"; // Hati Patah
-    love.style.left = Math.random() * window.innerWidth + "px";
-    document.body.appendChild(love);
-    setTimeout(() => love.remove(), 5000); 
-}, 1200);
-
-// PESAN BUBBLE
-const bubble = document.getElementById("pesan-bubble");
-let bubbleShown = false;
-
-window.addEventListener("scroll", () => {
-    if (!bubbleShown && window.scrollY > 60) {
-        bubbleShown = true;
-        bubble.style.display = "block";
-        bubble.innerHTML = "Aku ingat, dulu kamu selalu ada untukku...";
-        setTimeout(() => {
-            bubble.innerHTML = "Aku merindukan cara kamu melihatku. Rindu rumah kita.";
-        }, 4000);
-        setTimeout(() => {
-            bubble.innerHTML = "Aku benar-benar siap berubah. Tolong percaya. 🙏";
-        }, 8000);
-        setTimeout(() => {
-            bubble.style.display = "none";
-        }, 12000);
-    }
-});
-
-// SURAT AKHIR
-document.addEventListener("DOMContentLoaded", () => {
-    const surat = document.getElementById("surat-akhir");
-    const btnSurat = document.getElementById("tutupSurat");
-
-    let suratSudahMuncul = false;  
-    let suratSudahDitutup = false; 
-
-    window.addEventListener("scroll", () => {
-        if (
-            !suratSudahMuncul &&
-            !suratSudahDitutup &&
-            window.innerHeight + window.scrollY >= document.body.offsetHeight - 2
-        ) {
-            surat.style.display = "flex";
-            surat.style.opacity = "1"; // Tampilkan dengan transisi
-            suratSudahMuncul = true;
-        }
-    });
-
-    btnSurat.addEventListener("click", () => {
-        surat.style.opacity = "0";
-
-        setTimeout(() => {
-            surat.style.display = "none";
-            surat.style.opacity = "1";
-        }, 300);
-
-        suratSudahDitutup = true;
-    });
 });
