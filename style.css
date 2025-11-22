@@ -24,10 +24,10 @@ h1, h2 {
 main {
     max-width: 900px;
     margin: 30px auto;
-    padding: 40px; /* Padding lebih besar */
+    padding: 40px; 
     background-color: rgba(255, 255, 255, 0.95);
     border-radius: 15px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); /* Bayangan lebih dramatis */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); 
     opacity: 0;
     animation: fadeInContent 1s forwards;
     animation-delay: 2s;
@@ -44,7 +44,7 @@ footer p {
 }
 
 /* ==================================== */
-/* 2. SPLASH SCREEN (index.html)        */
+/* 2. SPLASH SCREEN & PASSWORD PAGE     */
 /* ==================================== */
 #splash-screen {
     display: flex;
@@ -77,9 +77,6 @@ footer p {
     color: #884A4A;
 }
 
-/* ==================================== */
-/* 3. PASSWORD PAGE (password.html)     */
-/* ==================================== */
 .password-page {
     display: flex;
     justify-content: center;
@@ -137,7 +134,7 @@ footer p {
 
 
 /* ==================================== */
-/* 4. MAIN CONTENT - EFEK & TEKS        */
+/* 3. MAIN CONTENT - EFEK & TEKS        */
 /* ==================================== */
 
 .heartbeat {
@@ -150,7 +147,7 @@ footer p {
     margin: 20px auto 40px;
     max-width: 90%;
     min-height: 50px;
-    border-right: .15em solid #884A4A; /* Kursor ketikan */
+    border-right: .15em solid #884A4A; 
     white-space: nowrap;
     overflow: hidden;
     font-size: 1.4em;
@@ -173,14 +170,47 @@ footer p {
     font-style: italic;
     margin: 30px auto;
     padding: 15px;
-    background-color: #f7e6e6; /* Warna latar belakang kutipan yang lembut */
+    background-color: #f7e6e6;
     border-left: 5px solid #884A4A;
     max-width: 80%;
     border-radius: 8px;
     font-family: 'Cormorant Garamond', serif;
 }
 
-/* 🖼️ GALERI FOTO - EFEK BARU */
+/* JANJI PERUBAHAN */
+#janji-nyata {
+    margin-top: 50px;
+    padding: 30px;
+    background-color: #ffeaea;
+    border-radius: 10px;
+    border: 1px dashed #884A4A;
+}
+
+.janji-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    font-size: 1.15em;
+}
+
+.janji-list li {
+    padding: 10px 0;
+    border-bottom: 1px dotted #ccc;
+    color: #444;
+    transition: color 0.3s;
+}
+
+.janji-list li:before {
+    content: "✔️ ";
+    color: #884A4A;
+    font-weight: bold;
+}
+
+.janji-list li:last-child {
+    border-bottom: none;
+}
+
+/* 🖼️ GALERI FOTO - EFEK HOVER */
 .galeri-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -194,18 +224,18 @@ footer p {
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.4s ease, filter 0.4s ease; /* Transisi untuk blur/zoom */
-    filter: grayscale(20%) brightness(90%); /* Foto sedikit kelam, melambangkan kesedihan */
+    transition: transform 0.4s ease, filter 0.4s ease;
+    filter: grayscale(20%) brightness(90%);
     cursor: pointer;
 }
 
 .galeri-grid img:hover {
     transform: scale(1.05);
-    filter: grayscale(0%) brightness(100%); /* Foto jelas saat di-hover, melambangkan harapan */
+    filter: grayscale(0%) brightness(100%);
 }
 
 /* ==================================== */
-/* 5. POPUP & MODAL (Interaksi)         */
+/* 4. POPUP & MODAL FOTO (Interaksi)    */
 /* ==================================== */
 
 /* 팝업 LULUH */
@@ -215,7 +245,7 @@ footer p {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Latar belakang lebih gelap */
+    background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -244,7 +274,7 @@ footer p {
 
 .btn-luluh {
     margin-top: 25px;
-    background: #884A4A; /* Warna deep rose */
+    background: #884A4A;
     color: white;
     padding: 12px 30px;
     border-radius: 30px;
@@ -267,17 +297,12 @@ footer p {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.85);
-    display: none; /* Disembunyikan, muncul saat scroll ke bawah */
+    display: none;
     justify-content: center;
     align-items: center;
     z-index: 10000;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
-}
-
-.surat-akhir.tampil {
-    display: flex;
-    opacity: 1;
 }
 
 .surat-box {
@@ -288,30 +313,47 @@ footer p {
     text-align: center;
     box-shadow: 0 0 50px rgba(255, 255, 255, 0.4);
 }
-.surat-box h2 {
-    color: #884A4A;
-    margin-top: 0;
+
+.tombol-akhir {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
 }
-.surat-box p {
-    font-size: 1.2em;
+
+.btn-whatsapp {
+    background: #25d366; 
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.2s;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.btn-whatsapp:hover {
+    background: #128c7e;
+    transform: scale(1.05);
 }
 
 .btn-surat {
-    margin-top: 20px;
-    background: #884A4A;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
+    background: #ccc;
+    color: #444;
     border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
     cursor: pointer;
+    font-weight: bold;
     transition: background 0.3s;
+    font-family: 'Cormorant Garamond', serif;
 }
 .btn-surat:hover {
-    background: #A05252;
+    background: #aaa;
 }
 
-
-/* ** MODAL FOTO KHUSUS (BARU) ** */
+/* ** MODAL FOTO KLIK ** */
 .modal-foto {
     display: none;
     position: fixed;
@@ -321,7 +363,7 @@ footer p {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.95); /* Lebih gelap, lebih fokus */
+    background-color: rgba(0,0,0,0.95);
     justify-content: center;
     align-items: center;
     animation: fadeInModal 0.3s;
@@ -393,7 +435,7 @@ footer p {
 
 
 /* ==================================== */
-/* 6. LAIN-LAIN                           */
+/* 5. LAIN-LAIN                           */
 /* ==================================== */
 
 /* ❤️ LOVE FLOATING */
@@ -401,7 +443,7 @@ footer p {
     position: fixed;
     top: -10px;
     font-size: 25px;
-    color: #884A4A; /* Hati berwarna Deep Rose */
+    color: #884A4A; 
     animation: loveFall 5s linear forwards;
     pointer-events: none;
     z-index: 10;
@@ -419,7 +461,7 @@ footer p {
     background: #fff;
     border: 2px solid #884A4A;
     padding: 15px 20px;
-    border-radius: 20px 20px 0 20px; /* Bentuk bubble */
+    border-radius: 20px 20px 0 20px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.2);
     display: none;
     font-size: 16px;

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Logika untuk index.html (Splash Screen) - TETAP
+    // Logika untuk index.html (Splash Screen)
     if (document.getElementById('splash-screen')) {
         const durasiAnimasiGIF = 5000;
         setTimeout(() => {
@@ -7,13 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }, durasiAnimasiGIF);
     }
 
-    // Logika untuk password.html - TETAP
+    // Logika untuk password.html
     if (document.getElementById('passwordInput')) {
         const passwordInput = document.getElementById('passwordInput');
         const submitPasswordBtn = document.getElementById('submitPassword');
         const pesanError = document.getElementById('pesanError');
 
-        // GANTI DENGAN KATA SANDI PILIHAN ANDA!!!
+        // ⚠️ GANTI DENGAN KATA SANDI PILIHAN ANDA!!!
         const KATA_SANDI_RAHASIA = "intancantik"; 
 
         const checkPassword = () => {
@@ -36,19 +36,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Logika Popup Luluh Mantan - TETAP
+    // Logika Popup Luluh Mantan
     if (document.getElementById("popup-luluh")) {
         const pop = document.getElementById("popup-luluh");
         const btn = document.getElementById("btnLuluh");
 
+        // Efek getar saat pop-up muncul (hanya berfungsi di ponsel)
+        if (navigator.vibrate) {
+            navigator.vibrate(200); 
+        }
+
         btn.addEventListener("click", () => {
             pop.style.opacity = "0";
             setTimeout(() => pop.style.display = "none", 500);
+
+            // Efek getar saat tombol diklik
+            if (navigator.vibrate) {
+                navigator.vibrate([100, 50, 100]); 
+            }
+
             alert("Terima kasih sudah memberiku waktu untuk bicara. Aku menunggu jawabanmu yang terpenting: Maukah kamu memaafkanku dan kembali membangun cerita kita? ❤️");
         });
     }
     
-    // ** EFEK TYPING DRAMATIS ** - TETAP
+    // ** EFEK TYPING DRAMATIS **
     const typingText = document.getElementById('typing-output');
     if (typingText) {
         const textToType = "Aku tidak bisa hidup tanpa kamu. Aku mohon, maafkan aku. Aku mencintaimu lebih dari segalanya.";
@@ -79,16 +90,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             modalImage.setAttribute('src', src);
             modalText.textContent = message;
-            photoModal.style.display = 'flex'; // Gunakan 'flex' agar modal di tengah
+            photoModal.style.display = 'flex';
         });
     });
 
-    // Tutup modal saat tombol 'x' diklik
     closeButton.addEventListener('click', () => {
         photoModal.style.display = 'none';
     });
 
-    // Tutup modal saat user klik di luar modal (di area gelap)
     window.addEventListener('click', (event) => {
         if (event.target === photoModal) {
             photoModal.style.display = 'none';
@@ -97,17 +106,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// LOVE FLOATING - TETAP
+// LOVE FLOATING
 setInterval(() => {
     const love = document.createElement("div");
     love.className = "love";
-    love.textContent = "💔"; 
+    love.textContent = "💔"; // Hati Patah
     love.style.left = Math.random() * window.innerWidth + "px";
     document.body.appendChild(love);
     setTimeout(() => love.remove(), 5000); 
 }, 1200);
 
-// PESAN BUBBLE - TETAP
+// PESAN BUBBLE
 const bubble = document.getElementById("pesan-bubble");
 let bubbleShown = false;
 
@@ -128,7 +137,7 @@ window.addEventListener("scroll", () => {
     }
 });
 
-// SURAT AKHIR - TETAP
+// SURAT AKHIR
 document.addEventListener("DOMContentLoaded", () => {
     const surat = document.getElementById("surat-akhir");
     const btnSurat = document.getElementById("tutupSurat");
@@ -143,6 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
             window.innerHeight + window.scrollY >= document.body.offsetHeight - 2
         ) {
             surat.style.display = "flex";
+            surat.style.opacity = "1"; // Tampilkan dengan transisi
             suratSudahMuncul = true;
         }
     });
