@@ -1,16 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Logika untuk index.html (Splash Screen)
+    // Logika untuk index.html (Splash Screen) - TETAP
     if (document.getElementById('splash-screen')) {
-        const splashScreen = document.getElementById('splash-screen');
-        const durasiAnimasiGIF = 5000; // 5000 milidetik = 5 detik (4s GIF + 1s fadeOut)
-
+        const durasiAnimasiGIF = 5000;
         setTimeout(() => {
-            // Setelah animasi selesai, redirect ke halaman password
             window.location.href = 'password.html';
         }, durasiAnimasiGIF);
     }
 
-    // Logika untuk password.html
+    // Logika untuk password.html - TETAP
     if (document.getElementById('passwordInput')) {
         const passwordInput = document.getElementById('passwordInput');
         const submitPasswordBtn = document.getElementById('submitPassword');
@@ -21,20 +18,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const checkPassword = () => {
             if (passwordInput.value.toLowerCase() === KATA_SANDI_RAHASIA) {
-                // Jika benar, redirect ke halaman konten utama
                 window.location.href = 'main-content.html';
             } else {
-                pesanError.textContent = "Oops, kata sandinya salah! Coba ingat lagi...";
-                pesanError.style.opacity = 1; // Tampilkan pesan error
+                pesanError.textContent = "Bukan kode itu, Sayang. Coba ingat yang paling romantis di antara kita...";
+                pesanError.style.opacity = 1;
                 setTimeout(() => {
-                    pesanError.style.opacity = 0; // Sembunyikan setelah beberapa detik
-                }, 3000);
+                    pesanError.style.opacity = 0;
+                }, 3500);
             }
         };
 
         submitPasswordBtn.addEventListener('click', checkPassword);
-
-        // Memungkinkan menekan 'Enter' untuk submit password
         passwordInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 checkPassword();
@@ -42,10 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Tidak ada JS khusus untuk main-content.html jika tidak ada interaksi tambahan
-    // Misalnya, jika Anda ingin menambahkan lightbox gallery, JS-nya akan di sini
-    
-    // Logika Popup Luluh Mantan dipindahkan ke dalam DOMContentLoaded agar lebih rapi
+    // Logika Popup Luluh Mantan
     if (document.getElementById("popup-luluh")) {
         const pop = document.getElementById("popup-luluh");
         const btn = document.getElementById("btnLuluh");
@@ -54,22 +45,39 @@ document.addEventListener('DOMContentLoaded', () => {
             pop.style.opacity = "0";
             setTimeout(() => pop.style.display = "none", 500);
             // Alert yang lebih emosional
-            alert("Terima kasih, Intan. Aku tunggu jawabanmu. Aku janji akan berubah. ❤️");
+            alert("Terima kasih sudah memberiku waktu untuk bicara. Aku menunggu jawabanmu yang terpenting: Maukah kamu memaafkanku dan kembali membangun cerita kita? ❤️");
         });
+    }
+    
+    // ** EFEK TYPING DRAMATIS **
+    const typingText = document.getElementById('typing-output');
+    if (typingText) {
+        const textToType = "Aku tidak bisa hidup tanpa kamu. Aku mohon, maafkan aku. Aku mencintaimu lebih dari segalanya.";
+        let i = 0;
+        const speed = 75; // Kecepatan ketikan
+
+        function typeWriter() {
+            if (i < textToType.length) {
+                typingText.innerHTML += textToType.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+        setTimeout(typeWriter, 1500); // Mulai efek setelah header muncul
     }
 });
 
-// LOVE FLOATING
+// LOVE FLOATING - Dibuat lebih halus
 setInterval(() => {
     const love = document.createElement("div");
     love.className = "love";
-    love.textContent = "💖";
+    love.textContent = "💔"; // Ubah hati menjadi hati patah untuk kesan sedih/memohon
     love.style.left = Math.random() * window.innerWidth + "px";
     document.body.appendChild(love);
-    setTimeout(() => love.remove(), 4000);
-}, 800);
+    setTimeout(() => love.remove(), 5000); // Lebih lambat
+}, 1200);
 
-// PESAN BUBBLE
+// PESAN BUBBLE - Teks lebih memohon
 const bubble = document.getElementById("pesan-bubble");
 let bubbleShown = false;
 
@@ -77,21 +85,20 @@ window.addEventListener("scroll", () => {
     if (!bubbleShown && window.scrollY > 60) {
         bubbleShown = true;
         bubble.style.display = "block";
-        // Teks bubble yang lebih fokus pada 6 tahun dan permintaan maaf
-        bubble.innerHTML = "Aku selalu ingat 6 tahun kita...";
+        bubble.innerHTML = "Aku ingat, dulu kamu selalu ada untukku...";
         setTimeout(() => {
-            bubble.innerHTML = "Aku benar-benar minta maaf atas kesalahanku.";
-        }, 3000);
+            bubble.innerHTML = "Aku merindukan cara kamu melihatku. Rindu rumah kita.";
+        }, 4000);
         setTimeout(() => {
-            bubble.innerHTML = "Tolong kasih aku satu kesempatan lagi... 🙏";
-        }, 6000);
+            bubble.innerHTML = "Aku benar-benar siap berubah. Tolong percaya. 🙏";
+        }, 8000);
         setTimeout(() => {
             bubble.style.display = "none";
-        }, 10000);
+        }, 12000);
     }
 });
 
-// SURAT AKHIR – FIX FINAL
+// SURAT AKHIR - TETAP (Logika sudah benar)
 document.addEventListener("DOMContentLoaded", () => {
     const surat = document.getElementById("surat-akhir");
     const btnSurat = document.getElementById("tutupSurat");
@@ -118,6 +125,6 @@ document.addEventListener("DOMContentLoaded", () => {
             surat.style.opacity = "1";
         }, 300);
 
-        suratSudahDitutup = true; // <<< FIX PENTING
+        suratSudahDitutup = true;
     });
 });
