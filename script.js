@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Logika KHUSUS main-content.html (Fix utama untuk mencegah error "is null") ---
+    // --- Logika KHUSUS main-content.html (Dipastikan berjalan setelah DOM dimuat) ---
     if (document.getElementById('konten-utama')) {
         
         // --- Photo Modal ---
@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         clickableImages.forEach(img => {
             img.addEventListener('click', () => {
-                // Tambahkan pengecekan null untuk keamanan
                 if (modal && modalImage && modalText) {
                     modal.style.display = 'flex';
                     modalImage.src = img.src;
@@ -73,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(() => {
             const love = document.createElement("div");
             love.className = "love";
-            love.textContent = "💔"; // Menggunakan ikon tema penyesalan
+            love.textContent = "💔"; // Ikon tema penyesalan
             document.body.appendChild(love);
             love.style.left = Math.random() * window.innerWidth + "px";
             setTimeout(() => love.remove(), 5000); 
