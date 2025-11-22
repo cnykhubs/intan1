@@ -36,10 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Logika KHUSUS main-content.html (Dipastikan berjalan setelah DOM dimuat) ---
+    // --- Logika KHUSUS main-content.html (Fix Total) ---
     if (document.getElementById('konten-utama')) {
         
-        // --- Photo Modal ---
+        // --- Photo Modal (Frame Aesthetic) ---
         const modal = document.getElementById('photo-modal');
         const modalImage = document.getElementById('modal-image');
         const modalText = document.getElementById('modal-text');
@@ -49,7 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
         clickableImages.forEach(img => {
             img.addEventListener('click', () => {
                 if (modal && modalImage && modalText) {
-                    modal.style.display = 'flex';
+                    modal.style.display = 'flex'; 
+                    
+                    // Logic untuk menjalankan animasi masuk yang baru
+                    const modalContent = document.querySelector('.modal-foto .modal-content');
+                    modalContent.style.animation = 'none';
+                    void modalContent.offsetWidth; 
+                    modalContent.style.animation = 'slideInPopUp 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards';
+
                     modalImage.src = img.src;
                     modalText.textContent = img.getAttribute('data-message');
                 }
@@ -58,13 +65,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (closeButton) {
             closeButton.addEventListener('click', () => {
-                if (modal) modal.style.display = 'none';
+                if (modal) {
+                    // Animasi keluar (reverse)
+                    const modalContent = document.querySelector('.modal-foto .modal-content');
+                    modalContent.style.animation = 'slideInPopUp 0.3s reverse forwards'; 
+                    
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                    }, 300); // Sesuaikan dengan durasi animasi keluar (0.3s)
+                }
             });
         }
 
         window.addEventListener('click', (event) => {
             if (event.target == modal) {
-                modal.style.display = 'none';
+                // Animasi keluar saat klik background
+                const modalContent = document.querySelector('.modal-foto .modal-content');
+                modalContent.style.animation = 'slideInPopUp 0.3s reverse forwards';
+                
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
             }
         });
         
@@ -72,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(() => {
             const love = document.createElement("div");
             love.className = "love";
-            love.textContent = "💔"; // Ikon tema penyesalan
+            love.textContent = "💔"; 
             document.body.appendChild(love);
             love.style.left = Math.random() * window.innerWidth + "px";
             setTimeout(() => love.remove(), 5000); 

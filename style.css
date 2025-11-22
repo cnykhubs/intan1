@@ -1,32 +1,32 @@
 /* ==================================== */
-/* 1. GAYA DASAR & FONT (Lebih Puitis)  */
+/* 1. GAYA DASAR & FONT (Lebih Romantis)*/
 /* ==================================== */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Handlee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Handlee&display=swap');
 
 body {
-    font-family: 'Cormorant Garamond', serif; /* Font lebih elegan dan puitis */
+    font-family: 'Handlee', cursive, sans-serif; /* Font tulisan tangan yang manis */
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%); /* Gradasi abu-abu/putih soft */
-    color: #333333;
+    background: linear-gradient(135deg, #fce4ec 0%, #ffe0f0 100%); /* Gradasi pink lembut */
+    color: #4a4a4a;
     text-align: center;
-    line-height: 1.8; /* Jarak baris lebih lebar, mudah dibaca */
-    overflow-x: hidden; /* Mencegah scroll horizontal */
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
 h1, h2 {
-    font-family: 'Handlee', cursive; /* Font tulisan tangan yang tulus */
-    color: #884A4A; /* Deep Rose/Merah Kecoklatan untuk kesan serius/cinta mendalam */
-    text-shadow: none;
+    font-family: 'Pacifico', cursive; /* Font yang lebih elegan untuk judul */
+    color: #d81b60; /* Deep pink/merah muda tua */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
     margin-top: 40px;
 }
 
 main {
     max-width: 900px;
     margin: 30px auto;
-    padding: 40px; 
-    background-color: rgba(255, 255, 255, 0.95);
-    border-radius: 15px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 25px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
@@ -45,36 +45,41 @@ footer p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #e0e0e0 0%, #f0f0f0 100%); /* Tema lebih soft */
+    background: linear-gradient(45deg, #ff8aae 0%, #ffc0cb 100%); /* Gradasi pink cerah */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #333;
+    color: white;
     z-index: 1000;
     animation: fadeOut 1s ease-in-out 4s forwards; 
 }
 
 .lucu-gif {
-    width: 280px; 
+    width: 250px; 
     height: auto;
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
     animation: zoomIn 1s ease-out;
 }
 
 .teks-bawah-gif {
-    margin-top: 25px;
-    font-size: 1.8em;
-    font-family: 'Handlee', cursive;
-    color: #884A4A;
-    text-shadow: none;
+    margin-top: 20px;
+    font-size: 2.5em;
+    font-family: 'Pacifico', cursive;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     animation: slideInUp 1s ease-out 0.5s forwards;
     opacity: 0;
+    color: white; 
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
 @keyframes slideInUp {
-    from { transform: translateY(30px); opacity: 0; }
+    from { transform: translateY(50px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
 
@@ -88,62 +93,62 @@ footer p {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    background: linear-gradient(45deg, #fce4ec 0%, #ffe0f0 100%);
 }
 
 .password-container {
     background-color: rgba(255, 255, 255, 0.95);
     padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     max-width: 400px;
     width: 90%;
 }
 
 .password-container h1 {
     font-size: 2.2em;
-    color: #884A4A;
+    color: #d81b60; /* Pink tua */
 }
 
 #passwordInput {
     width: calc(100% - 20px);
-    padding: 15px;
+    padding: 12px;
     margin: 20px 0;
-    border: 2px solid #ddd;
+    border: 2px solid #ffabab; /* Pink muda */
     border-radius: 10px;
-    font-size: 1.2em;
+    font-size: 1.1em;
     text-align: center;
     transition: all 0.3s ease;
 }
 
+#passwordInput:focus {
+    border-color: #e91e63; /* Pink lebih gelap */
+    box-shadow: 0 0 10px rgba(233, 30, 99, 0.3);
+    outline: none;
+}
+
 #submitPassword {
-    background-color: #884A4A;
+    background-color: #e91e63; /* Pink lebih gelap */
     color: white;
     border: none;
-    padding: 15px 30px;
+    padding: 12px 25px;
     border-radius: 10px;
     cursor: pointer;
     font-size: 1.1em;
-    font-weight: 700;
+    font-weight: bold;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 #submitPassword:hover {
-    background-color: #5d3333;
-    transform: translateY(-2px);
+    background-color: #d81b60; /* Pink tua */
+    transform: translateY(-3px);
 }
 
 .error-message {
-    color: #cc0000;
+    color: #ff3366; /* Merah pink untuk error */
     margin-top: 15px;
     font-weight: bold;
     opacity: 0; 
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
-    20%, 40%, 60%, 80% { transform: translateX(10px); }
 }
 
 /* ==================================== */
@@ -152,49 +157,51 @@ footer p {
 #tentang p {
     font-size: 1.1em;
     color: #555;
-    margin: 20px 0;
+    margin: 15px 0;
 }
 
 .quote {
     font-style: italic;
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 700;
-    font-size: 1.2em;
-    color: #884A4A;
+    font-family: 'Handlee', cursive, sans-serif;
+    font-weight: normal;
+    font-size: 1.05em;
+    color: #888;
     margin: 30px 0;
-    padding: 20px;
-    background-color: #f7f7f7;
-    border-left: 5px solid #884A4A;
-    border-radius: 8px;
+    padding: 15px;
+    background-color: #fff0f5; /* Pink sangat muda */
+    border-left: 5px solid #ff69b4; /* Hot pink */
+    border-radius: 10px;
 }
 
 /* Galeri Foto */
 .galeri-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
     padding: 20px 0;
 }
 
 .galeri-grid img {
     width: 100%;
-    height: 250px; 
+    height: 280px; 
     object-fit: cover;
-    border-radius: 12px;
-    border: 4px solid #fff; 
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    border: 6px solid #ffdee9; /* Pink sangat muda */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
     transition: transform 0.4s ease-in-out;
     cursor: pointer;
 }
 
 .galeri-grid img:hover {
-    transform: scale(1.05); 
+    transform: scale(1.08) rotate(5deg); /* Lebih ekspresif saat hover */
 }
 
 /* ==================================== */
 /* 4. MODALS, SURAT & BUTTONS           */
+/* (Enhanced Modal Foto Frame)          */
 /* ==================================== */
-/* Photo Modal */
+
+/* Photo Modal (Latar Belakang) */
 .modal-foto {
     display: none; 
     position: fixed; 
@@ -204,59 +211,78 @@ footer p {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(255, 230, 240, 0.9); /* Latar belakang pink transparan lembut */
+    backdrop-filter: blur(8px); /* Efek blur halus */
     align-items: center;
     justify-content: center;
-    animation: fadeInModal 0.5s;
 }
 
+/* Kotak Modal (Bingkai Polaroid/Scrapbook) */
 .modal-content {
     margin: auto;
     display: block;
     width: 90%;
-    max-width: 600px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    animation: zoomIn 0.5s;
+    max-width: 650px; 
+    background: #ffffff;
+    padding: 25px 25px 40px 25px; 
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(216, 27, 96, 0.4); /* Shadow warna pink/deep rose */
+    border: 4px solid #ffc0cb; /* Border pink muda */
+    opacity: 0;
+    position: relative; 
 }
 
+/* Gambar di dalam Modal */
 .modal-img {
     width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 15px;
+    object-fit: cover;
+    border: 3px solid #fce4ec; /* Frame internal sangat halus */
 }
 
+/* Pesan Teks di bawah Gambar */
 .modal-pesan {
-    color: #884A4A;
-    font-size: 1.1em;
-    margin-top: 15px;
+    color: #d81b60; /* Deep pink untuk pesan */
+    font-family: 'Handlee', cursive, sans-serif;
+    font-size: 1.3em; 
+    margin-top: 25px;
     font-style: italic;
+    padding: 10px 5px;
+    border-top: 2px dashed #ffc0cb; /* Garis putus-putus seperti sobekan kertas */
 }
 
+/* Tombol Close */
 .close-button {
-    color: #aaa;
-    float: right;
-    font-size: 35px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #d81b60; 
+    font-size: 40px;
     font-weight: bold;
+    opacity: 0.8;
+    transition: transform 0.2s, opacity 0.2s;
 }
 
 .close-button:hover,
 .close-button:focus {
-    color: #ff0000;
+    color: #e91e63;
     text-decoration: none;
     cursor: pointer;
+    transform: rotate(90deg);
+    opacity: 1;
 }
 
-@keyframes fadeInModal {
-    from {opacity: 0} 
-    to {opacity: 1}
-}
-
-@keyframes zoomIn {
-    from {transform: scale(0.7);} 
-    to {transform: scale(1);}
+/* Animasi Masuk Modal Baru */
+@keyframes slideInPopUp {
+    from {
+        opacity: 0;
+        transform: scale(0.7) translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
 
@@ -264,8 +290,8 @@ footer p {
 .love {
     position: fixed;
     top: -10px;
-    font-size: 25px;
-    color: #884A4A; 
+    font-size: 22px;
+    color: #ff5fa8; /* Hot pink */
     animation: loveFall 5s linear forwards;
     pointer-events: none;
     z-index: 10;
@@ -281,7 +307,7 @@ footer p {
     bottom: 90px;
     right: 20px;
     background: #fff;
-    border: 2px solid #884A4A;
+    border: 2px solid #ffc0cb; /* Pink muda */
     padding: 15px 20px;
     border-radius: 20px 20px 0 20px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.15);
@@ -326,23 +352,23 @@ footer p {
 }
 
 .btn-whatsapp {
-    background: #25D366;
+    background: #25D366; /* Tetap hijau WhatsApp */
     color: white;
     padding: 15px;
     border-radius: 10px;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: bold;
     font-size: 1.1em;
     transition: background-color 0.3s;
 }
 
 .btn-tutup {
-    background: #884A4A;
+    background: #ff69b4; /* Hot pink */
     color: white;
     padding: 15px;
     border-radius: 10px;
     border: none;
-    font-weight: 700;
+    font-weight: bold;
     font-size: 1.1em;
     cursor: pointer;
     transition: background-color 0.3s;
