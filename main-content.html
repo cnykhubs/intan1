@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="photo-modal" class="modal-foto">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <img id="modal-image" src="" alt="Kenangan" class="modal-img">
+            <p id="modal-text" class="modal-pesan"></p>
+        </div>
+    </div>
     <div id="surat-akhir" class="surat-akhir">
         <div class="surat-box">
             <h2>💌 Surat Terakhir. Paling Tulus.</h2>
@@ -65,16 +72,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <section id="galeri-foto">
             <h2>Galeri Kenangan. Aku Rindu Rumah Kita. 📸❤️</h2>
-            <p>Setiap foto ini adalah bukti nyata bahwa kita pernah sekuat itu. Aku butuh kamu, Intan. Aku butuh kita.</p>
+            <p>Setiap foto ini adalah bukti nyata bahwa kita pernah sekuat itu. **Klik fotonya, Intan, dan dengarkan isi hatiku saat itu.**</p>
             
             <div class="galeri-grid">
-                <img src="foto/foto-1.jpg" alt="Awal Kita">
-                <img src="foto/foto-2.jpg" alt="Masa-masa Bahagia">
-                <img src="foto/foto-3.jpg" alt="Kita Bertumbuh">
-                <img src="foto/foto-4.jpg" alt="Momen Tak Terlupakan">
-                <img src="foto/foto-5.jpg" alt="Bersamamu">
-                <img src="foto/foto-6.jpg" alt="Selalu Kamu">
-                </div>
+                <img src="foto/foto-1.jpg" alt="Awal Kita" class="clickable-img"
+                     data-message="Momen awal kita. Aku seharusnya menjaga senyum ini selamanya. Maaf aku gagal menjaganya.">
+                <img src="foto/foto-2.jpg" alt="Masa-masa Bahagia" class="clickable-img"
+                     data-message="Di sini, aku merasa dunia milik kita berdua. Kenapa aku biarkan kenangan seindah ini hanya tinggal kenangan? Aku menyesal.">
+                <img src="foto/foto-3.jpg" alt="Kita Bertumbuh" class="clickable-img"
+                     data-message="Lihat betapa kita sudah dewasa bersama. Aku tidak menghargai proses pertumbuhan itu. Aku mohon, beri aku kesempatan untuk melanjutkannya.">
+                <img src="foto/foto-4.jpg" alt="Momen Tak Terlupakan" class="clickable-img"
+                     data-message="Tawa kita di foto ini palsu tanpamu sekarang. Aku terlalu sibuk dengan egoku. Aku kangen tawa ini.">
+                <img src="foto/foto-5.jpg" alt="Bersamamu" class="clickable-img"
+                     data-message="Kamu adalah alasan aku bangun setiap pagi. Tanpamu, pagi terasa gelap. Maafkan aku yang tidak melihat betapa berharganya kamu.">
+                <img src="foto/foto-6.jpg" alt="Selalu Kamu" class="clickable-img"
+                     data-message="Aku janji, jika kamu memberiku kesempatan, aku akan menjadikanmu prioritas utama. Aku menyesal karena pernah menduakanmu dengan hal-hal yang tidak penting.">
+            </div>
         </section>
 
         <footer>

@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Logika Popup Luluh Mantan
+    // Logika Popup Luluh Mantan - TETAP
     if (document.getElementById("popup-luluh")) {
         const pop = document.getElementById("popup-luluh");
         const btn = document.getElementById("btnLuluh");
@@ -44,12 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener("click", () => {
             pop.style.opacity = "0";
             setTimeout(() => pop.style.display = "none", 500);
-            // Alert yang lebih emosional
             alert("Terima kasih sudah memberiku waktu untuk bicara. Aku menunggu jawabanmu yang terpenting: Maukah kamu memaafkanku dan kembali membangun cerita kita? ❤️");
         });
     }
     
-    // ** EFEK TYPING DRAMATIS **
+    // ** EFEK TYPING DRAMATIS ** - TETAP
     const typingText = document.getElementById('typing-output');
     if (typingText) {
         const textToType = "Aku tidak bisa hidup tanpa kamu. Aku mohon, maafkan aku. Aku mencintaimu lebih dari segalanya.";
@@ -65,19 +64,50 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         setTimeout(typeWriter, 1500); // Mulai efek setelah header muncul
     }
+
+    // ** LOGIKA KLIK FOTO (BARU) **
+    const clickableImages = document.querySelectorAll('.clickable-img');
+    const photoModal = document.getElementById('photo-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalText = document.getElementById('modal-text');
+    const closeButton = document.querySelector('.close-button');
+
+    clickableImages.forEach(img => {
+        img.addEventListener('click', () => {
+            const message = img.getAttribute('data-message');
+            const src = img.getAttribute('src');
+
+            modalImage.setAttribute('src', src);
+            modalText.textContent = message;
+            photoModal.style.display = 'flex'; // Gunakan 'flex' agar modal di tengah
+        });
+    });
+
+    // Tutup modal saat tombol 'x' diklik
+    closeButton.addEventListener('click', () => {
+        photoModal.style.display = 'none';
+    });
+
+    // Tutup modal saat user klik di luar modal (di area gelap)
+    window.addEventListener('click', (event) => {
+        if (event.target === photoModal) {
+            photoModal.style.display = 'none';
+        }
+    });
+
 });
 
-// LOVE FLOATING - Dibuat lebih halus
+// LOVE FLOATING - TETAP
 setInterval(() => {
     const love = document.createElement("div");
     love.className = "love";
-    love.textContent = "💔"; // Ubah hati menjadi hati patah untuk kesan sedih/memohon
+    love.textContent = "💔"; 
     love.style.left = Math.random() * window.innerWidth + "px";
     document.body.appendChild(love);
-    setTimeout(() => love.remove(), 5000); // Lebih lambat
+    setTimeout(() => love.remove(), 5000); 
 }, 1200);
 
-// PESAN BUBBLE - Teks lebih memohon
+// PESAN BUBBLE - TETAP
 const bubble = document.getElementById("pesan-bubble");
 let bubbleShown = false;
 
@@ -98,7 +128,7 @@ window.addEventListener("scroll", () => {
     }
 });
 
-// SURAT AKHIR - TETAP (Logika sudah benar)
+// SURAT AKHIR - TETAP
 document.addEventListener("DOMContentLoaded", () => {
     const surat = document.getElementById("surat-akhir");
     const btnSurat = document.getElementById("tutupSurat");
