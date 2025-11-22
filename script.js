@@ -44,19 +44,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Tidak ada JS khusus untuk main-content.html jika tidak ada interaksi tambahan
     // Misalnya, jika Anda ingin menambahkan lightbox gallery, JS-nya akan di sini
+    
+    // Logika Popup Luluh Mantan dipindahkan ke dalam DOMContentLoaded agar lebih rapi
+    if (document.getElementById("popup-luluh")) {
+        const pop = document.getElementById("popup-luluh");
+        const btn = document.getElementById("btnLuluh");
+
+        btn.addEventListener("click", () => {
+            pop.style.opacity = "0";
+            setTimeout(() => pop.style.display = "none", 500);
+            // Alert yang lebih emosional
+            alert("Terima kasih, Intan. Aku tunggu jawabanmu. Aku janji akan berubah. ❤️");
+        });
+    }
 });
-
-// Popup Luluh Mantan
-if (document.getElementById("popup-luluh")) {
-    const pop = document.getElementById("popup-luluh");
-    const btn = document.getElementById("btnLuluh");
-
-    btn.addEventListener("click", () => {
-        pop.style.opacity = "0";
-        setTimeout(() => pop.style.display = "none", 500);
-        alert("Terima kasih... Aku serius sama kamu. ❤️");
-    });
-}
 
 // LOVE FLOATING
 setInterval(() => {
@@ -76,12 +77,13 @@ window.addEventListener("scroll", () => {
     if (!bubbleShown && window.scrollY > 60) {
         bubbleShown = true;
         bubble.style.display = "block";
-        bubble.innerHTML = "Aku masih sayang kamu...";
+        // Teks bubble yang lebih fokus pada 6 tahun dan permintaan maaf
+        bubble.innerHTML = "Aku selalu ingat 6 tahun kita...";
         setTimeout(() => {
-            bubble.innerHTML = "Ingat ga momen kita?";
+            bubble.innerHTML = "Aku benar-benar minta maaf atas kesalahanku.";
         }, 3000);
         setTimeout(() => {
-            bubble.innerHTML = "Aku kangen deket sama kamu...";
+            bubble.innerHTML = "Tolong kasih aku satu kesempatan lagi... 🙏";
         }, 6000);
         setTimeout(() => {
             bubble.style.display = "none";
